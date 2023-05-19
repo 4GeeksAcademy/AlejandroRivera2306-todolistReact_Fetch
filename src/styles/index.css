@@ -10,3 +10,29 @@
     import 'relative/path/to/stylesheet.scss';
 
 */
+html {
+	box-sizing: border-box;
+    font-size: 62.5%;  /*1 REM igual a 10px */
+}
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+body{
+    font-size: 1.6rem;
+    line-height: 2;
+
+}
+.contenedor{
+    background: rgb(114, 34, 244);
+    color: white;
+    max-width: 120rem;
+    margin: 0 auto;
+    padding: 2rem;
+    margin-top: 2rem;
+    border-radius: 1rem;
+    
+}
+.fondoboton{
+    background: white;
+    border: none;
+}
