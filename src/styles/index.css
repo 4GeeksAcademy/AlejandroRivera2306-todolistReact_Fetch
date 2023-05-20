@@ -23,7 +23,7 @@ body{
 
 }
 .contenedor{
-    background: rgb(114, 34, 244);
+    background: rgb(30, 44, 246);
     color: white;
     max-width: 120rem;
     margin: 0 auto;
@@ -35,4 +35,14 @@ body{
 .fondoboton{
     background: white;
     border: none;
+}
+.tamañoletra{
+    font-size: 2rem;
+}
+.panelboton{
+    display: flex;
+    justify-content:space-between;
+}
+.eliminartodo{
+    font-size: 2rem;
 }

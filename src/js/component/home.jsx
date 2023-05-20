@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 const Home = () => {
   const [task, setTask] = useState([]);
   const [newTask, setNewTask] = useState("");
+  
 
   const obtenerTareas = () => {
     fetch('https://assets.breatheco.de/apis/fake/todos/user/alerivera')
@@ -51,11 +52,31 @@ const Home = () => {
       .then(() => {
         setTask(updatedTasks); // Actualizar las tareas en el estado local
       });
+      console.log(task)
   };
+
+  const eliminarTodo = () => {
+    const emptyTasks = [];
+    fetch('https://assets.breatheco.de/apis/fake/todos/user/alerivera', {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(emptyTasks)
+    })
+      .then((response) => response.json())
+      .then(() => {
+        setTask(emptyTasks); // Establecer el estado de las tareas como un arreglo vacío
+      });
+  };
+
+
 
   useEffect(() => {
     obtenerTareas();
   }, []);
+
+  const contadorTareas = task.length;
 
   return (
     <div>
@@ -67,7 +88,7 @@ const Home = () => {
       <div className="input-group mb-3">
         <input
           type="text"
-          className="form-control"
+          className="form-control tamañoletra"
           placeholder="Nueva tarea"
           aria-label="Nueva tarea"
           aria-describedby="button-addon2"
@@ -84,7 +105,7 @@ const Home = () => {
       <div className="input-group mb-3">
         <input
           type="text"
-          className="form-control"
+          className="form-control tamañoletra"
           placeholder="Nueva tarea"
           aria-label="Nueva tarea"
           aria-describedby="button-addon2"
@@ -97,7 +118,7 @@ const Home = () => {
       <div className="input-group mb-3" key={tarea.id}>
         <input
           type="text"
-          className="form-control"
+          className="form-control tamañoletra"
           placeholder="Recipient's username"
           aria-label="Recipient's username"
           aria-describedby="button-addon2"
@@ -113,6 +134,12 @@ const Home = () => {
         </button>
       </div>
     ))}
+    <div className="panelboton">
+    <span>Items: {contadorTareas} </span>
+    <button  type="button" className="btn btn-danger eliminartodo" onClick={eliminarTodo}
+    
+    >Eliminar Todo</button>
+    </div>
   </div>
 )}
 
